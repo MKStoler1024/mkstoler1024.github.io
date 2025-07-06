@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MKStoler1024's Homepage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #B24B46, #F59E0B);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(178, 75, 70, 0.3);
+        }
+        
+        .typing-effect {
+            border-right: 2px solid #B24B46;
+            animation: blink 0.75s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: #B24B46 }
+        }
+        
+        .badge {
+            transition: all 0.2s ease;
+        }
+        
+        .badge:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header Section -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+            <div class="flex-1">
+                <h1 class="text-4xl font-bold mb-2 gradient-text">MKStoler1024</h1>
+                <p class="text-lg text-gray-400 italic">"掠过浮霞光影，最后能赢下生活的，还是我们。"</p>
+                <div class="mt-4 flex items-center space-x-2">
+                    <span class="text-sm bg-gray-800 px-3 py-1 rounded-full badge">
+                        <i class="fas fa-eye mr-1"></i> <span id="viewCount">0</span> views
+                    </span>
+                    <span class="text-sm bg-gray-800 px-3 py-1 rounded-full badge">
+                        <i class="fas fa-code-branch mr-1"></i> Developer
+                    </span>
+                </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <img src="https://avatars.githubusercontent.com/u/158786854?v=4" alt="Avatar" class="w-32 h-32 rounded-full border-2 border-gray-700 shadow-lg">
+            </div>
+        </header>
+
+        <!-- Typing Effect Section -->
+        <section class="bg-gray-800 rounded-xl p-6 mb-12 text-center card-hover">
+            <div id="typingText" class="text-xl font-mono typing-effect inline-block">
+                Learn not and know not.
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="mb-12">
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-6 card-hover">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-info-circle mr-2 text-amber-500"></i> Contact Information
+                </h2>
+                <div class="bg-gray-900 rounded-lg p-4 mb-4">
+                    <p class="text-amber-100 mb-2">⚠️ 我是随机在国内上线的，所以你可能并不能联系到我。</p>
+                    <p class="text-amber-100">出于众所周知的原因，QQ 很有可能吞掉你的消息。所以如确有要事，请直接由电子邮箱或者通过本仓库 Discussion 联系我！</p>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <a href="mailto:qsgz2023ji5ban@edicdn.eu.org" class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-lg flex items-center transition">
+                        <i class="fas fa-envelope mr-2"></i> Email
+                    </a>
+                    <a href="https://github.com/MKStoler1024/MKStoler1024/discussions" class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-lg flex items-center transition">
+                        <i class="fab fa-github mr-2"></i> GitHub Discussions
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 flex items-center">
+                <i class="fas fa-star mr-3 text-amber-500"></i> Featured Projects
+            </h2>
+            
+            <!-- ClassIsland Project -->
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-6 mb-8 card-hover">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/4 mb-4 md:mb-0 md:pr-4">
+                        <img src="https://github.com/ClassIsland/ClassIsland/raw/master/ClassIsland/Assets/AppLogo_AppLogo.svg" alt="ClassIsland Logo" class="w-full rounded-lg">
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-2xl font-bold mb-2">ClassIsland</h3>
+                        <p class="text-gray-400 mb-4">🏫🧑‍🏫 只需要这一个软件，你就能有一个「充实」的课堂。 🧑‍🏫🏫</p>
+                        <p class="mb-4">ClassIsland 是一款专为班级大屏设计的工具，可以显示天气、倒计时、时间、上下课提醒。亦可以用 <span class="text-amber-400">丰富的插件和自动化</span> 做到更多复杂的功能。<span class="font-bold">还有主题呢！</span></p>
+                        
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <a href="https://classisland.tech/" class="bg-amber-600 hover:bg-amber-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                <i class="fas fa-globe mr-1"></i> Website
+                            </a>
+                            <a href="https://docs.classisland.tech/zh-cn/latest/" class="bg-amber-600 hover:bg-amber-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                <i class="fas fa-book mr-1"></i> Documentation
+                            </a>
+                            <a href="https://qm.qq.com/q/4NsDQKiAuQ" class="bg-amber-600 hover:bg-amber-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                <i class="fab fa-qq mr-1"></i> Official Channel
+                            </a>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <div class="bg-gray-900 text-xs p-2 rounded text-center">
+                                <div class="font-bold">Stars</div>
+                                <div>1.2k</div>
+                            </div>
+                            <div class="bg-gray-900 text-xs p-2 rounded text-center">
+                                <div class="font-bold">Forks</div>
+                                <div>156</div>
+                            </div>
+                            <div class="bg-gray-900 text-xs p-2 rounded text-center">
+                                <div class="font-bold">Downloads</div>
+                                <div>5.4k</div>
+                            </div>
+                            <div class="bg-gray-900 text-xs p-2 rounded text-center">
+                                <div class="font-bold">License</div>
+                                <div>MIT</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Class Widgets Project -->
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-6 card-hover">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/4 mb-4 md:mb-0 md:pr-4">
+                        <img src="https://github.com/Class-Widgets/Class-Widgets/blob/main/img%2FLogo.png" alt="Class Widgets Logo" class="w-full rounded-lg">
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-2xl font-bold mb-2">Class Widgets</h3>
+                        <p class="text-gray-400 mb-4">🏫🧑‍🏫 啥？不会用高级语言？没事，备选方案在此。 🧑‍🏫🏫</p>
+                        <p class="mb-4">拥有由Python编写的插件系统和插件广场……以及通过 <span class="text-amber-400">自定义</span> 个性化你的 Class Widgets</p>
+                        
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <a href="https://classwidgets.rinlit.cn/" class="bg-amber-600 hover:bg-amber-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                <i class="fas fa-globe mr-1"></i> Website
+                            </a>
+                            <a href="https://github.com/Class-Widgets/Class-Widgets/releases" class="bg-amber-600 hover:bg-amber-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                <i class="fas fa-download mr-1"></i> Releases
+                            </a>
+                            <a href="https://www.yuque.com/rinlit/class-widgets_help" class="bg-amber-600 hover:bg-amber-700 px-3 py-1 rounded-lg text-sm flex items-center">
+                                <i class="fas fa-book mr-1"></i> Documentation
+                            </a>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <div class="bg-gray-900 text-xs p-2 rounded text-center">
+                                <div class="font-bold">Stars</div>
+                                <div>856</div>
+                            </div>
+                            <div class="bg-gray-900 text-xs p-2 rounded text-center">
+                                <div class="font-bold">Forks</div>
+                                <div>98</div>
+                            </div>
+                            <div class="bg-gray-900 text-xs p-2 rounded text-center">
+                                <div class="font-bold">Downloads</div>
+                                <div>3.2k</div>
+                            </div>
+                            <div class="bg-gray-900 text-xs p-2 rounded text-center">
+                                <div class="font-bold">License</div>
+                                <div>GPL-3.0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="mb-12">
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-6 card-hover">
+                <h2 class="text-3xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-user mr-3 text-amber-500"></i> About Me
+                </h2>
+                
+                <div class="mb-6">
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4">
+                        <p class="text-red-400 font-bold">⚠️ 我原来的号被封了……QaQ，不要乱下载别人发的东西啊，即使是在影子系统里，千万别登录社交账号！</p>
+                        <p class="text-red-400 font-bold">这是血的教训啊啊啊啊啊（超大声）இ௰இ</p>
+                    </div>
+                    
+                    <p class="mb-4">主页喜欢吧，拿 ai 写的（）很多数据是假的，图一乐就好。喜欢写些没啥用的小程序( •̀ ω •́ )y，大体上用的都是 <span class="font-mono bg-gray-700 px-2 py-1 rounded">Visual Basic 6.0</span>，少数用的是 <span class="font-mono bg-gray-700 px-2 py-1 rounded">Python</span>，这两个语言都是勉强能写出程序来的。</p>
+                    
+                    <p class="mb-4">额……唯一喜欢的体育运动是打羽毛球。现在在上高二，走大理。<span class="font-bold">可能是全校唯一一个电脑里除了META以外啥别的游戏都没有的人</span>。不吃谷，但是朋友...</p>
+                    
+                    <p class="mb-4">写不出程序来（需 GPT 辅助）的但是能修改（文字）能读懂一半语言的的有：<span class="text-amber-400">HTML, PHP, JS, Vue, TS, C++, C, C#</span></p>
+                    
+                    <p class="mb-4">其他的连碰都不敢碰(っ °Д °;)っ比如 Golang……</p>
+                    
+                    <p class="font-bold">讲实在的，我真的！真的！！真的！！！<span class="line-through">没咋写过现代代码了！！！！</span> 好了开始写了（）</p>
+                </div>
+                
+                <a href="https://github.com/ExamAware" class="inline-block bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded-lg transition">
+                    <i class="fas fa-code mr-2"></i> 来这里监视施工进度！
+                </a>
+            </div>
+        </section>
+
+        <!-- Recommended Software Section -->
+        <section>
+            <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-6 card-hover">
+                <h2 class="text-3xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-thumbs-up mr-3 text-amber-500"></i> Recommended Software
+                </h2>
+                
+                <div class="text-center">
+                    <a href="https://github.com/awesome-iwb/awesome-iwb" class="inline-block text-2xl font-bold gradient-text hover:underline">
+                        Awesome-iwb 点我访问
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-12 text-center text-gray-500 text-sm">
+            <p>© 2023 MKStoler1024. All rights reserved.</p>
+            <p class="mt-2">Made with <i class="fas fa-heart text-red-500"></i> and <i class="fas fa-coffee text-amber-500"></i></p>
+        </footer>
+    </div>
+
+    <script>
+        // Typing effect
+        const texts = [
+            "Learn not and know not.",
+            "Don't give up and don't give in.",
+            "Hang on to your dreams."
+        ];
+        let currentTextIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typingText');
+        
+        function typeText() {
+            const currentText = texts[currentTextIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+            }
+            
+            if (!isDeleting && currentCharIndex === currentText.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentTextIndex = (currentTextIndex + 1) % texts.length;
+            }
+            
+            setTimeout(typeText, isDeleting ? 50 : 100);
+        }
+        
+        // View counter animation
+        function animateCounter(target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            const element = document.getElementById('viewCount');
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    clearInterval(timer);
+                    current = target;
+                }
+                element.textContent = Math.floor(current);
+            }, 16);
+        }
+        
+        // Start animations when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            typeText();
+            animateCounter(1587); // Replace with actual view count
+        });
+    </script>
+</body>
+</html>
