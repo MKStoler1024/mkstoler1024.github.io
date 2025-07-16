@@ -62,7 +62,13 @@
                         <i class="fas fa-eye mr-1"></i> <span id="viewCount">0</span> views
                     </span>
                     <span class="text-sm bg-gray-800 px-3 py-1 rounded-full badge">
-                        <i class="fas fa-code-branch mr-1"></i> Developer
+                        <i class="fas fa-star mr-1"></i> <span id="repoStars">-</span> Stars
+                    </span>
+                    <span class="text-sm bg-gray-800 px-3 py-1 rounded-full badge">
+                        <i class="fas fa-code-branch mr-1"></i> <span id="repoForks">-</span> Forks
+                    </span>
+                    <span class="text-sm bg-gray-800 px-3 py-1 rounded-full badge">
+                        <i class="fas fa-eye mr-1"></i> <span id="repoWatchers">-</span> Watchers
                     </span>
                 </div>
             </div>
@@ -113,7 +119,7 @@
                     </div>
                     <div class="md:w-3/4">
                         <h3 class="text-2xl font-bold mb-2">ClassIsland</h3>
-                        <p class="text-gray-400 mb-4">🏫🧑‍🏫 只需要这一个软件，你就能有一个「充实」的课堂。 🧑‍🏫🏫</p>
+                        <p class="text-gray-400 mb-4">🏫 只需要这一个软件，你就能有一个「充实」的课堂。 </p>
                         <p class="mb-4">ClassIsland 是一款专为班级大屏设计的工具，可以显示天气、倒计时、时间、上下课提醒。亦可以用 <span class="text-amber-400">丰富的插件和自动化</span> 做到更多复杂的功能。<span class="font-bold">还有主题呢！</span></p>
                         
                         <div class="flex flex-wrap gap-3 mb-4">
@@ -131,19 +137,19 @@
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
                             <div class="bg-gray-900 text-xs p-2 rounded text-center">
                                 <div class="font-bold">Stars</div>
-                                <div>1.2k</div>
+                                <div id="ciStars">1.2k</div>
                             </div>
                             <div class="bg-gray-900 text-xs p-2 rounded text-center">
                                 <div class="font-bold">Forks</div>
-                                <div>156</div>
+                                <div id="ciForks">156</div>
                             </div>
                             <div class="bg-gray-900 text-xs p-2 rounded text-center">
                                 <div class="font-bold">Downloads</div>
-                                <div>5.4k</div>
+                                <div id="ciDownloads">5.4k</div>
                             </div>
                             <div class="bg-gray-900 text-xs p-2 rounded text-center">
                                 <div class="font-bold">License</div>
-                                <div>MIT</div>
+                                <div id="ciLicense">MIT</div>
                             </div>
                         </div>
                     </div>
@@ -154,11 +160,11 @@
             <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl p-6 card-hover">
                 <div class="flex flex-col md:flex-row">
                     <div class="md:w-1/4 mb-4 md:mb-0 md:pr-4">
-                        <img src="https://github.com/Class-Widgets/Class-Widgets/blob/main/img%2FLogo.png" alt="Class Widgets Logo" class="w-full rounded-lg">
+                        <img src="https://raw.githubusercontent.com/Class-Widgets/Class-Widgets/refs/heads/main/img/Logo.png" alt="Class Widgets Logo" class="w-full rounded-lg">
                     </div>
                     <div class="md:w-3/4">
                         <h3 class="text-2xl font-bold mb-2">Class Widgets</h3>
-                        <p class="text-gray-400 mb-4">🏫🧑‍🏫 啥？不会用高级语言？没事，备选方案在此。 🧑‍🏫🏫</p>
+                        <p class="text-gray-400 mb-4">🏫啥？不会用高级语言？没事，备选方案在此。 </p>
                         <p class="mb-4">拥有由Python编写的插件系统和插件广场……以及通过 <span class="text-amber-400">自定义</span> 个性化你的 Class Widgets</p>
                         
                         <div class="flex flex-wrap gap-3 mb-4">
@@ -176,19 +182,19 @@
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
                             <div class="bg-gray-900 text-xs p-2 rounded text-center">
                                 <div class="font-bold">Stars</div>
-                                <div>856</div>
+                                <div id="cwStars">856</div>
                             </div>
                             <div class="bg-gray-900 text-xs p-2 rounded text-center">
                                 <div class="font-bold">Forks</div>
-                                <div>98</div>
+                                <div id="cwForks">98</div>
                             </div>
                             <div class="bg-gray-900 text-xs p-2 rounded text-center">
                                 <div class="font-bold">Downloads</div>
-                                <div>3.2k</div>
+                                <div id="cwDownloads">3.2k</div>
                             </div>
                             <div class="bg-gray-900 text-xs p-2 rounded text-center">
                                 <div class="font-bold">License</div>
-                                <div>GPL-3.0</div>
+                                <div id="cwLicense">GPL-3.0</div>
                             </div>
                         </div>
                     </div>
@@ -298,6 +304,133 @@
             }, 16);
         }
         
+        // 仓库信息填充
+        document.addEventListener("DOMContentLoaded", async function () {
+            async function fetchRepoInfo() {
+                let urls = [
+                    "https://api.github.com/repos/InkCanvasForClass/community"
+                ];
+                // fastestMirror 可选，未定义时跳过
+                if (typeof fastestMirror !== "undefined" && fastestMirror) {
+                    urls.push(fastestMirror + "/https://api.github.com/repos/InkCanvasForClass/community");
+                }
+                for (const mirror of [
+                    "https://gh.llkk.cc",
+                    "https://ghfile.geekertao.top",
+                    "https://gh.dpik.top",
+                    "https://github.dpik.top",
+                    "https://github.acmsz.top",
+                    "https://git.yylx.win"
+                ]) {
+                    urls.push(mirror + "/https://api.github.com/repos/InkCanvasForClass/community");
+                }
+                for (let i = 0; i < urls.length; i++) {
+                    try {
+                        let res = await fetch(urls[i], { cache: "no-store" });
+                        if (res.ok) {
+                            return await res.json();
+                        }
+                    } catch (e) {
+                        // ignore
+                    }
+                }
+                return null;
+            }
+            // 获取并填充
+            const repo = await fetchRepoInfo();
+            if (repo) {
+                document.getElementById("repoStars").textContent = repo.stargazers_count ?? "-";
+                document.getElementById("repoForks").textContent = repo.forks_count ?? "-";
+                document.getElementById("repoWatchers").textContent = repo.subscribers_count ?? "-";
+            } else {
+                document.getElementById("repoStars").textContent = "获取失败";
+                document.getElementById("repoForks").textContent = "获取失败";
+                document.getElementById("repoWatchers").textContent = "获取失败";
+            }
+        });
+        
+        // 获取 ClassIsland 仓库信息并填充
+        async function fetchClassIslandInfo() {
+            let urls = [
+                "https://api.github.com/repos/ClassIsland/ClassIsland"
+            ];
+            for (const mirror of [
+                "https://gh.llkk.cc",
+                "https://ghfile.geekertao.top",
+                "https://gh.dpik.top",
+                "https://github.dpik.top",
+                "https://github.acmsz.top",
+                "https://git.yylx.win"
+            ]) {
+                urls.push(mirror + "/https://api.github.com/repos/ClassIsland/ClassIsland");
+            }
+            for (let i = 0; i < urls.length; i++) {
+                try {
+                    let res = await fetch(urls[i], { cache: "no-store" });
+                    if (res.ok) {
+                        return await res.json();
+                    }
+                } catch (e) {
+                    // ignore
+                }
+            }
+            return null;
+        }
+
+        // 获取 Class Widgets 仓库信息并填充
+        async function fetchClassWidgetsInfo() {
+            let urls = [
+                "https://api.github.com/repos/Class-Widgets/Class-Widgets"
+            ];
+            for (const mirror of [
+                "https://gh.llkk.cc",
+                "https://ghfile.geekertao.top",
+                "https://gh.dpik.top",
+                "https://github.dpik.top",
+                "https://github.acmsz.top",
+                "https://git.yylx.win"
+            ]) {
+                urls.push(mirror + "/https://api.github.com/repos/Class-Widgets/Class-Widgets");
+            }
+            for (let i = 0; i < urls.length; i++) {
+                try {
+                    let res = await fetch(urls[i], { cache: "no-store" });
+                    if (res.ok) {
+                        return await res.json();
+                    }
+                } catch (e) {
+                    // ignore
+                }
+            }
+            return null;
+        }
+
+        document.addEventListener("DOMContentLoaded", async function () {
+            // 获取并填充 ClassIsland 仓库信息
+            const ciRepo = await fetchClassIslandInfo();
+            if (ciRepo) {
+                document.getElementById("ciStars").textContent = ciRepo.stargazers_count ?? "-";
+                document.getElementById("ciForks").textContent = ciRepo.forks_count ?? "-";
+                document.getElementById("ciLicense").textContent = ciRepo.license?.spdx_id ?? "-";
+            } else {
+                document.getElementById("ciStars").textContent = "获取失败";
+                document.getElementById("ciForks").textContent = "获取失败";
+                document.getElementById("ciLicense").textContent = "获取失败";
+            }
+
+            // 获取并填充 Class Widgets 仓库信息
+            const cwRepo = await fetchClassWidgetsInfo();
+            if (cwRepo) {
+                document.getElementById("cwStars").textContent = cwRepo.stargazers_count ?? "-";
+                document.getElementById("cwForks").textContent = cwRepo.forks_count ?? "-";
+                document.getElementById("cwLicense").textContent = cwRepo.license?.spdx_id ?? "-";
+            } else {
+                document.getElementById("cwStars").textContent = "获取失败";
+                document.getElementById("cwForks").textContent = "获取失败";
+                document.getElementById("cwLicense").textContent = "获取失败";
+            }
+        });
+
         // Start animations when page loads
         window.addEventListener('DOMContentLoaded', () => {
             typeText();
